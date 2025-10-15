@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
-import drug_store_management.entity.Thuoc;
+import drug_store_management.entity.Medicine;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ThuocRequestDTO {
+public class MedicineRequestDTO {
 
     private Integer id;
 
@@ -45,8 +45,8 @@ public class ThuocRequestDTO {
     private String nhaCungCap;
 
     // Convert to Thuoc entity
-    public Thuoc toEntity() {
-        Thuoc thuoc = new Thuoc();
+    public Medicine toEntity() {
+        Medicine thuoc = new Medicine();
         thuoc.setId(this.id != null ? this.id.intValue() : null);
         thuoc.setAnh(this.imageUrl); // Gọi setAnh(String)
         thuoc.setTen(this.ten);
@@ -59,8 +59,8 @@ public class ThuocRequestDTO {
     }
 
     // Create from Thuoc entity
-    public static ThuocRequestDTO fromEntity(Thuoc thuoc) {
-        ThuocRequestDTO dto = new ThuocRequestDTO();
+    public static MedicineRequestDTO fromEntity(Medicine thuoc) {
+        MedicineRequestDTO dto = new MedicineRequestDTO();
         dto.setId(thuoc.getId() != null ? Integer.valueOf(thuoc.getId()) : null);
         dto.setImageUrl(thuoc.getAnh());
         dto.setTen(thuoc.getTen());

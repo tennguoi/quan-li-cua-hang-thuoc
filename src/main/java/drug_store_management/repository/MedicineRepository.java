@@ -1,9 +1,9 @@
 package drug_store_management.repository;
 
-import drug_store_management.entity.Thuoc;
+import drug_store_management.entity.Medicine;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ThuocRepository extends JpaRepository<Thuoc, Integer> {
+public interface MedicineRepository extends JpaRepository<Medicine, Integer> {
 }
