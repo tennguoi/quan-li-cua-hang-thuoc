@@ -1,15 +1,15 @@
 package drug_store_management.service;
 
 import drug_store_management.entity.Medicine;
+import drug_store_management.entity.MedicineType;
+import drug_store_management.entity.Supplier;
 import drug_store_management.repository.MedicineRepository;
-import drug_store_management.config.FileUploadConfig;
+import drug_store_management.repository.MedicineTypeRepository;
+import drug_store_management.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MedicineService {
@@ -18,7 +18,23 @@ public class MedicineService {
     private MedicineRepository medicineRepository;
 
     @Autowired
-    private FileUploadConfig fileUploadConfig;
+    private MedicineTypeRepository medicineTypeRepository;
 
+    @Autowired
+    private SupplierRepository supplierRepository;
 
+    // Lấy danh sách loại thuốc (hiển thị dropdown)
+    public List<MedicineType> getAllMedicineTypes() {
+        return medicineTypeRepository.findAll();
+    }
+
+    // Lấy danh sách nhà cung cấp (hiển thị dropdown)
+    public List<Supplier> getAllSuppliers() {
+        return supplierRepository.findAll();
+    }
+
+    // Lưu thuốc mới vào database
+    public void addMedicine(Medicine medicine) {
+        medicineRepository.save(medicine);
+    }
 }

@@ -1,23 +1,32 @@
 package drug_store_management.controller;
 
-import drug_store_management.dto.MedicineRequestDTO;
 import drug_store_management.entity.Medicine;
 import drug_store_management.service.MedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.validation.Valid;
-import java.io.IOException;
-import java.util.List;
-
-@RestController
-@RequestMapping("/api/medicine")
+@Controller
+@RequestMapping("/medicines")
 public class MedicineController {
 
     @Autowired
     private MedicineService medicineService;
 
+    // 🧩 Hiển thị form thêm thuốc
+    @GetMapping("/add")
+    public String showAddForm(Model model) {
+        model.addAttribute("medicine", new Medicine());
+        model.addAttribute("types", medicineService.getAllMedicineTypes());
+        model.addAttribute("suppliers", medicineService.getAllSuppliers());
+        return "medicine_add"; // Tên file HTML (view)
+    }
 
+    // 💾 Xử lý thêm thuốc khi người dùng submit form
+    @PostMapping("/add")
+    public String addMedicine(@ModelAttribute("medicine") Medicine medicine) {
+        medicineService.addMedicine(medicine);
+        return "redirect:/medicines"; // Sau khi thêm xong quay về danh sách
+    }
 }
