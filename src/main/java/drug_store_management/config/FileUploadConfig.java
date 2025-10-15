@@ -36,7 +36,6 @@ public class FileUploadConfig implements WebMvcConfigurer {
             return null;
         }
 
-        // Tạo tên file mới để tránh trùng tên
         String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
         Path path = Paths.get(uploadDir + fileName);
 
