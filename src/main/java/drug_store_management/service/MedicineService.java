@@ -20,5 +20,13 @@ public class MedicineService {
     @Autowired
     private FileUploadConfig fileUploadConfig;
 
-
+    public Medicine addMedicine(Medicine medicine, MultipartFile imageFile) throws IOException {
+        if (imageFile != null && !imageFile.isEmpty()) {
+            String imageUrl = fileUploadConfig.storeFile(imageFile);
+            if (imageUrl != null) {
+                medicine.setImage(imageUrl);
+            }
+        }
+        return medicineRepository.save(medicine);
+    }
 }

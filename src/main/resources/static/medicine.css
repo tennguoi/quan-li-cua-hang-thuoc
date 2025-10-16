@@ -1,0 +1,102 @@
+:root {
+            --primary-color: #6b21a8; /* Dark purple/indigo */
+            --secondary-color: #10b981; /* Bright green */
+            --accent-color: #ec4899; /* Bright magenta */
+            --light-gray-bg: #f4f4f4;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-header {
+            background: linear-gradient(to right, var(--primary-color), #8b5cf6);
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nav-link {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link.active {
+            background: linear-gradient(to right, rgba(var(--primary-color-rgb), 0.1), rgba(139, 92, 246, 0.1));
+            font-weight: bold;
+        }
+        
+        .nav-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--primary-color), #8b5cf6);
+        }
+        
+        .nav-link:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .summary-card {
+            background: linear-gradient(to bottom right, var(--primary-color), #8b5cf6);
+            color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .summary-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .filter-panel {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+        }
+        
+        .table-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .table thead th {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+        }

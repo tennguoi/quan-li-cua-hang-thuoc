@@ -13,11 +13,16 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/medicine")
+@RequestMapping("/api/medicine") // Giữ @RequestMapping gốc để tổ chức cấu trúc
 public class MedicineController {
 
     @Autowired
     private MedicineService medicineService;
 
-
+    @PostMapping("/add") 
+    public ResponseEntity<MedicineRequestDTO> addMedicine(@Valid @ModelAttribute MedicineRequestDTO medicineDTO) throws IOException {
+        Medicine medicine = medicineDTO.toEntity();
+        Medicine savedMedicine = medicineService.addMedicine(medicine, medicineDTO.getImageFile());
+        return ResponseEntity.ok(MedicineRequestDTO.fromEntity(savedMedicine));
+    }
 }
